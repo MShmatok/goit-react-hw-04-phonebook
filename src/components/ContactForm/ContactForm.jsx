@@ -19,6 +19,7 @@ class ContactForm extends Component {
     }
     this.setState(InitialValue);
   };
+
   render() {
     return (
       <ContainerForma onSubmit={this.onSubmit}>
