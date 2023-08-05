@@ -44,7 +44,16 @@ const App = () => {
       return prevState.filter(item => item.id !== id);
     });
   };
+  const getVisibleContacts = () => {
+    let colectionForRender = contacts.filter(item => {
+      return item.name
+        .trim()
+        .toLocaleLowerCase()
+        .includes(filter.trim().toLocaleLowerCase());
+    });
 
+    return colectionForRender;
+  };
   return (
     <Container>
       <Title>Phonebook</Title>
@@ -52,11 +61,7 @@ const App = () => {
 
       <SubTitle>Contacts</SubTitle>
       <Filter filterText={filter} onFilter={setFilters} />
-      <ContactList
-        contacts={contacts}
-        filterText={filter}
-        onDelete={handleDelete}
-      />
+      <ContactList contacts={getVisibleContacts()} onDelete={handleDelete} />
     </Container>
   );
 };

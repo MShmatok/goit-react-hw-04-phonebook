@@ -1,16 +1,10 @@
 import PropTypes from 'prop-types';
 import ContactItem from 'components/ContactItem/ContactItem';
 
-const ContactList = ({ filterText, contacts, onDelete }) => {
-  let colectionForRender = contacts.filter(item => {
-    return item.name
-      .trim()
-      .toLocaleLowerCase()
-      .includes(filterText.trim().toLocaleLowerCase());
-  });
+const ContactList = ({ contacts, onDelete }) => {
   return (
     <ul>
-      {colectionForRender.map(item => (
+      {contacts.map(item => (
         <ContactItem
           key={item.id}
           contact={item}
@@ -23,7 +17,6 @@ const ContactList = ({ filterText, contacts, onDelete }) => {
 
 export default ContactList;
 ContactList.propTypes = {
-  filterText: PropTypes.string.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
